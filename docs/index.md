@@ -11,6 +11,18 @@ Further concerns were raised with the seeming fragilty of lwip in threaded envir
 
 Some googling (*red.* the thing we used to do before LLMs ...) brought me to the FreeRTOS 'Plus' libraries and the discovery of an arsenal of features.
 
+## Project structure
+
+    Core/      # STM peripheral initialization code
+    Drivers/   # STM HAL
+    docs/      # Markdown files for project-level documentation (this!)
+    FreeRTOS/  # FreeRTOS submodule with FreeRTOS Plus and utilities
+        FreeRTOS/
+        FreeRTOS-Plus/
+    FreeRTOS-Plus-FAT/    # Is still a 'lab' and not an official FreeRTOS lib yet.
+    scripts/   # Supporting scripts for interacting with the utilities.
+
+
 ## ST tool dependency
 
 In this project the focus is *not* on the integration of FreeRTOS on the STM32F7.
@@ -22,7 +34,7 @@ As such, the use of ST's tools has been purposefully minimized:
 * We want to keep our findings portable and reusable for other platforms.
 * We want to *understand* what is required to port the libraries and not have the work done for us.
 
-We end up sticking with the use `STMCubeMX` for generating:
+We end up sticking with the use of `STMCubeMX` for generating:
 
 * Default peripheral configurations
 * Explicitly *no* (FreeRTOS) middleware
