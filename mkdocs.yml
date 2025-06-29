@@ -1,0 +1,36 @@
+site_name: RTOS 'Plus' suite
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - FreeRTOS: freertos.md
+  - FreeRTOS-Plus-TCP: freertos_plus_tcp.md
+  - FreeRTOS-Plus-FAT: freertos_plus_fat.md
+
+markdown_extensions:
+  - admonition
+  - footnotes
+  - tables
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
+
+# Enable if you want to generate pdf
+# plugins:
+#   - to-pdf
+
+extra_javascript:
+  - javascripts/katex.js
+  - https://unpkg.com/katex@0/dist/katex.min.js
+  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+
+extra_css:
+  - https://unpkg.com/katex@0/dist/katex.min.css
+

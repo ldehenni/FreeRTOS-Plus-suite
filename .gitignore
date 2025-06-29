@@ -1,1 +1,7 @@
+# CMake build 
 build/
+
+# Python virtual env
+.venv/
+venv/
+VENV/

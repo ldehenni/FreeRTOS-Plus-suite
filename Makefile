@@ -3,3 +3,7 @@ PROGRAMMER_CLI = "/opt/st/stm32cubeclt_1.17.0/STM32CubeProgrammer/bin/STM32_Prog
 .PHONY: flash
 flash:
 	$(PROGRAMMER_CLI) --connect port=swd --download "build/RTOS-suite.elf" -rst
+
+.PHONY: doc
+doc:
+	@. .venv/bin/activate ; mkdocs serve -a localhost:8000 > /dev/null 2>&1 & 
