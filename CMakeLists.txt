@@ -40,6 +40,19 @@ add_executable(${CMAKE_PROJECT_NAME})
 # Add STM32CubeMX generated sources
 add_subdirectory(cmake/stm32cubemx)
 
+# FreeRTOS
+set(FREERTOS_PORT "GCC_ARM_CM7")
+set(FREERTOS_HEAP 4)
+add_subdirectory(cmake/freertos)
+add_subdirectory(FreeRTOS/FreeRTOS/Source)
+
+set(CMSIS_SOURCE 
+    # CMSIS-FreeRTOS/CMSIS/RTOS2/FreeRTOS/Source/clib_os.c
+    CMSIS-FreeRTOS/CMSIS/RTOS2/FreeRTOS/Source/cmsis_os2.c
+    # CMSIS-FreeRTOS/CMSIS/RTOS2/FreeRTOS/Source/freertos_evr.c
+    # CMSIS-FreeRTOS/CMSIS/RTOS2/FreeRTOS/Source/handlers.c
+)
+
 # Link directories setup
 target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined library search paths
@@ -49,11 +62,15 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user sources here
     main.c
+    led_task.c
+    ${CMSIS_SOURCE}
 )
 
 # Add include paths
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user defined include paths
+    CMSIS-FreeRTOS/CMSIS/RTOS2/FreeRTOS/Include
+    ./Drivers/CMSIS/RTOS2/Include/
 )
 
 # Add project symbols (macros)
@@ -64,6 +81,6 @@ target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE
 # Add linked libraries
 target_link_libraries(${CMAKE_PROJECT_NAME}
     stm32cubemx
-
+    freertos_kernel 
     # Add user defined libraries
 )
