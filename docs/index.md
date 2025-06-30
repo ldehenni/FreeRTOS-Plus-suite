@@ -53,6 +53,7 @@ As these are 'generate once' kind of files, STMCubeMx is not a dependency of thi
         * Datastream
     * FTP server
     * Webserver over TCP
+    * Modbus server
 * FAT file system with FreeRTOS-Plus-FAT
     * In RAM
     * Use FTP server to populate
